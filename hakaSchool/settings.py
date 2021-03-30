@@ -26,7 +26,9 @@ SECRET_KEY = '%sl78xm=9z-cv*zs#myd_+#i7#tkz=b3l80*fn_8ali2y!yyl6'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost','https://mcu-owo.herokuapp.com/']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost','https://mcu-owo.herokuapp.com/','mcu-owo.herokuapp.com',
+    'http://mcu-owo.herokuapp.com/' ,'*']
+
 # Application definition
 
 INSTALLED_APPS = [

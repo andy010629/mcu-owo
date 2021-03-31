@@ -45,6 +45,7 @@ def course_list(request):
     islogin = 'std%5Fenm' in request.COOKIES
     if 'course-list' in request.COOKIES:
         l = json.loads(request.COOKIES.get('course-list'))
+        print(l)
         response = HttpResponse(render(request, 'course_list.html',{
             'course_list': l,
             'islogin': islogin

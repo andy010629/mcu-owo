@@ -127,10 +127,10 @@ STATICFILES_DIRS = [
 ]
 
 # PWA setting
-PWA_APP_NAME = 'My App'
-PWA_APP_DESCRIPTION = "My app description"
-PWA_APP_THEME_COLOR = '#0A0302'
-PWA_APP_BACKGROUND_COLOR = '#ffffff'
+PWA_APP_NAME = 'MCU OwO'
+PWA_APP_DESCRIPTION = "This is a Haka School"
+PWA_APP_THEME_COLOR = '#FFFFFF'
+PWA_APP_BACKGROUND_COLOR = '#588ff5'
 PWA_APP_DISPLAY = 'standalone'
 PWA_APP_SCOPE = '/'
 PWA_APP_ORIENTATION = 'any'
@@ -138,77 +138,52 @@ PWA_APP_START_URL = '/'
 PWA_APP_STATUS_BAR_COLOR = 'default'
 PWA_APP_ICONS = [
     {
-        'src': '/static/img/icons/icon-152x152.png',
-        'sizes': '152x152',
+        'src': '/static/img/icons/icon48.png',
+        'sizes': '48x48',
         "purpose": "any maskable"
-    },
-    {
-        'src': '/static/img/icons/icon-96x96.png',
-        'sizes': '96x96',
-        "purpose": "any maskable"
-    },
-    {
-        'src': '/static/img/icons/icon-128x128.png',
-        'sizes': '128x128',
-        "purpose": "any maskable"
-    },
-    {
-        'src': '/static/img/icons/icon-144x144.png',
-        'sizes': '144x144',
-        "purpose": "any maskable"
-    },
-    {
-        'src': '/static/img/icons/icon-72x72.png',
+    },  {
+        'src': '/static/img/icons/icon72.png',
         'sizes': '72x72',
         "purpose": "any maskable"
-    },
-    {
-        'src': '/static/img/icons/icon-384x384.png',
-        'sizes': '384x384',
+    },  {
+        'src': '/static/img/icons/icon96.png',
+        'sizes': '96x96',
         "purpose": "any maskable"
-    },
-    {
-        'src': '/static/img/icons/icon-512x512.png',
+    },  {
+        'src': '/static/img/icons/icon144.png',
+        'sizes': '144x144',
+        "purpose": "any maskable"
+    },  {
+        'src': '/static/img/icons/icon192.png',
+        'sizes': '192x192',
+        "purpose": "any maskable"
+    },  {
+        'src': '/static/img/icons/icon512.png',
         'sizes': '512x512',
         "purpose": "any maskable"
-    }
+    }, 
+        {
+            "src": "/static/img/icons/icon-256x256.png",
+            "sizes": "256x256",
+            "type": "image/png"
+        },
+        {
+            "src": "/static/img/icons/icon-384x384.png",
+            "sizes": "384x384",
+            "type": "image/png"
+        },
 ]
 PWA_APP_ICONS_APPLE = [
-       {
-        'src': '/static/img/icons/icon-152x152.png',
-        'sizes': '152x152',
+      {
+        'src': '/static/img/icons/icon192.png',
+        'sizes': '192x192',
         "purpose": "any maskable"
     },
-    {
-        'src': '/static/img/icons/icon-96x96.png',
+   {
+        'src': '/static/img/icons/icon96.png',
         'sizes': '96x96',
         "purpose": "any maskable"
-    },
-    {
-        'src': '/static/img/icons/icon-128x128.png',
-        'sizes': '128x128',
-        "purpose": "any maskable"
-    },
-    {
-        'src': '/static/img/icons/icon-144x144.png',
-        'sizes': '144x144',
-        "purpose": "any maskable"
-    },
-    {
-        'src': '/static/img/icons/icon-72x72.png',
-        'sizes': '72x72',
-        "purpose": "any maskable"
-    },
-    {
-        'src': '/static/img/icons/icon-384x384.png',
-        'sizes': '384x384',
-        "purpose": "any maskable"
-    },
-    {
-        'src': '/static/img/icons/icon-512x512.png',
-        'sizes': '512x512',
-        "purpose": "any maskable"
-    }
+    }, 
 ]
 PWA_APP_SPLASH_SCREEN = [
     {

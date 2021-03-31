@@ -2,7 +2,8 @@
 
 :root {
     --primary: #2c69da;
-    --secondary: #6ca0ff;
+    --dark: #2862ce;
+    --secondary: #588ff5;
     --title: #d6ddfd;
 }
 
@@ -12,17 +13,18 @@
 nav {
     background: var(--primary);
     border-bottom: 1vh solid var(--secondary);
+    border-top: 1vh solid var(--dark);
 }
 
 nav a {
     text-transform: uppercase;
     color: var(--title);
-    font-size: 17px;
+    font-size: 3vh;
 }
 
 nav a span {
     font-weight: bold;
-    font-size: 17px;
+    font-size: 3vh;
 }
 
 nav .sidenav-trigger {

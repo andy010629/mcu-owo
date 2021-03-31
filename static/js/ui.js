@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
-  // nav menu
-  const menus = document.querySelectorAll('.side-menu');
-  M.Sidenav.init(menus, {edge: 'right'});
-  // add recipe form
-  const forms = document.querySelectorAll('.side-form');
-  M.Sidenav.init(forms, {edge: 'left'});
+    // nav menu
+    const menus = document.querySelectorAll('.side-menu');
+    var sidemenu = M.Sidenav.init(menus, { edge: 'right' });
+    var elems = document.querySelectorAll('.login-page');
+    var instances = M.Modal.init(elems);
+
 });

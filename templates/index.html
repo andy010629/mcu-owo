@@ -30,12 +30,43 @@
 
     <!-- side nav -->
     <ul id="side-menu" class="sidenav side-menu">
-        <li><a class="subheader">MCU OwO$</a></li>
+        <li><a class="subheader">$MCU OwO$</a></li>
         <li><a href="/" class="waves-effect">Home</a></li>
         <li>
             <div class="divider"></div>
         </li>
+         <li><a class="waves-effect modal-trigger login-btn" data-target="login-page">Login</a></li>
+        <li>
+            <div class="divider"></div>
+        </li>
     </ul>
+
+  <!-- Login Page -->
+  <div id="login-page" class="modal login-page">
+    <div class="modal-content" style="height: 30vh">
+      <h4>Login</h4>
+	 <div class="col s6">
+		<form class="">
+      <div class="row">
+		 <div class="input-field col s12">
+          <input id="Email" type="email" class="validate">
+          <label for="Email">Email</label>
+        </div>
+        <div class="input-field col s12">
+          <input id="Password" type="text" class="validate">
+          <label for="Password">Password</label>
+        </div>
+		 <div class="input-field col s12">
+          <button type="submit" class="waves-effect waves-light btn">Login</button>
+        </div>     
+      </div>	
+      </form>
+     </div>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+    </div>
+  </div>
 
     <!-- recipes -->
     <div class="recipes container grey-text text-darken-1">
@@ -43,25 +74,7 @@
         </div>
     </div>
 
-    <!-- add recipe side nav -->
-    <div id="side-form" class="sidenav side-form">
-        <form class="add-recipe container section">
-            <h6>New Recipe</h6>
-            <div class="divider"></div>
-            <div class="input-field">
-                <input placeholder="e.g. Ninja soup" id="title" type="text" class="validate">
-                <label for="title">Recipe Title</label>
-            </div>
-            <div class="input-field">
-                <input placeholder="e.g. Tofu, mushroom, garlic" id="ingredients" type="text" class="validate">
-                <label for="ingredients">Ingredients</label>
-            </div>
-            <div class="input-field center">
-                <button class="btn-small">Add</button>
-            </div>
-        </form>
-    </div>
-
+   
     <script src="{% static 'js/ui.js' %}"></script>
 </body>
 

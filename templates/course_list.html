@@ -62,34 +62,49 @@
 
 
 
-
-  <!-- Login Page -->
+  <!-- Login page -->
   <div id="login-page" class="modal login-page">
-    <div class="modal-content">
-      <h4>Login</h4>
-	 <div class="col s6">
-		<form action="/login/" method="post" id ="login-form">
-          {% csrf_token %}
-      <div class="row">
-		 <div class="input-field col s12">
-          <input id="StudentID" type="number" class="validate" name = "uu">
-          <label for="StudentID">學號</label>
+      <div class="modal-content">
+        <h4>Login</h4>
+        <div class="col s6">
+          <form action="/login/" method="post" id="login-form">
+            {% csrf_token %}
+            <div class="row">
+              <div class="input-field col s12">
+                <input
+                  id="StudentID"
+                  type="number"
+                  class="validate"
+                  name="uu"
+                />
+                <label for="StudentID">學號</label>
+              </div>
+              <div class="input-field col s12">
+                <input
+                  id="Password"
+                  type="password"
+                  class="validate"
+                  name="pp"
+                />
+                <label for="Password">密碼</label>
+              </div>
+              <div class="input-field col s12">
+                <button type="submit" class="waves-effect waves-light btn">
+                  Login
+                </button>
+              </div>
+            </div>
+          </form>
         </div>
-        <div class="input-field col s12">
-          <input id="Password" type="text" class="validate" name="pp">
-          <label for="Password">密碼</label>
-        </div>
-		 <div class="input-field col s12">
-          <button type="submit" class="waves-effect waves-light btn">Login</button>
-        </div>     
-      </div>	
-      </form>
-     </div>
+      </div>
+      <div class="modal-footer">
+        <a
+          href="#!"
+          class="modal-action modal-close waves-effect waves-green btn-flat"
+          >Close</a
+        >
+      </div>
     </div>
-    <div class="modal-footer">
-      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
-    </div>
-  </div>
 
     <!-- recipes -->
     <div class="recipes container grey-text text-darken-1">

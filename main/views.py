@@ -13,15 +13,23 @@ def logout(request):
 
 def index(request):
     islogin = 'std%5Fenm' in request.COOKIES
-    stu = ""
-    if islogin: 
+    if islogin:
         request.session['alert'] = '' 
-        r =  requests.post('https://www.mcu.edu.tw/student/new-query/default.asp',cookies=request.COOKIES)
-        r.encoding = 'big5'
-        soup = BeautifulSoup(r.text,"html.parser")
-        course_list = soup.select('#___01 > tr:nth-of-type(4) > td:nth-of-type(1) > table > tr:nth-of-type(2) > td > table:nth-of-type(1) > tr')
-        stu = soup.select('#___01 > tr:nth-of-type(1) > td:nth-of-type(3) > table > tr:nth-of-type(2) > td > table > tr:nth-of-type(1) > td')[0].text
-    return render(request,'index.html',{'islogin':islogin,'alert':request.session.get('alert',''),'Stu':stu})
+        if 'student' in request.COOKIES:
+            stu = json.loads(request.COOKIES.get('student'))
+            response = HttpResponse(render(request,'index.html',{'islogin':islogin,'alert':request.session.get('alert',''),'Stu':stu}))
+        else:
+            r =  requests.post('https://www.mcu.edu.tw/student/new-query/default.asp',cookies=request.COOKIES)
+            r.encoding = 'big5'
+            soup = BeautifulSoup(r.text,"html.parser")
+            course_list = soup.select('#___01 > tr:nth-of-type(4) > td:nth-of-type(1) > table > tr:nth-of-type(2) > td > table:nth-of-type(1) > tr')
+            stu = soup.select('#___01 > tr:nth-of-type(1) > td:nth-of-type(3) > table > tr:nth-of-type(2) > td > table > tr:nth-of-type(1) > td')[0].text
+            response = HttpResponse(render(request,'index.html',{'islogin':islogin,'alert':request.session.get('alert',''),'Stu':stu}))
+            response.set_cookie('student',json.dumps(stu))
+        return response
+    else:
+        stu = "尚未登入"
+        return render(request,'index.html',{'islogin':islogin,'alert':request.session.get('alert',''),'Stu':stu})
 
 def login(request):
     if request.method == 'POST':

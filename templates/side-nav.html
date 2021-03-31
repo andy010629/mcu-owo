@@ -1,0 +1,75 @@
+ <ul id="side-menu" class="sidenav side-menu">
+      <li><a class="subheader">$MCU OwO$</a></li>
+      <li><a href="/" class="waves-effect">首頁</a></li>
+      <li>
+        <div class="divider"></div>
+      </li>
+      <li><a href="/course_list" class="waves-effect">課程列表</a></li>
+      <li>
+        <div class="divider"></div>
+      </li>
+      {% if not islogin %}
+      <li>
+        <a class="waves-effect modal-trigger login-btn" data-target="login-page"
+          >登入</a
+        >
+      </li>
+      <li>
+        <div class="divider"></div>
+      </li>
+      {% else %}
+      <li>
+        <a href="/logout" class="waves-effect modal-trigger logout-btn"
+          >登出</a
+        >
+      </li>
+      <li>
+        <div class="divider"></div>
+      </li>
+      {% endif %}
+    </ul>
+
+
+  <!-- Login page -->
+  <div id="login-page" class="modal login-page">
+      <div class="modal-content">
+        <h4>Login</h4>
+        <div class="col s6">
+          <form action="/login/" method="post" id="login-form">
+            {% csrf_token %}
+            <div class="row">
+              <div class="input-field col s12">
+                <input
+                  id="StudentID"
+                  type="number"
+                  class="validate"
+                  name="uu"
+                />
+                <label for="StudentID">學號</label>
+              </div>
+              <div class="input-field col s12">
+                <input
+                  id="Password"
+                  type="password"
+                  class="validate"
+                  name="pp"
+                />
+                <label for="Password">密碼</label>
+              </div>
+              <div class="input-field col s12">
+                <button type="submit" class="waves-effect waves-light btn">
+                  Login
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <a
+          href="#!"
+          class="modal-action modal-close waves-effect waves-green btn-flat"
+          >Close</a
+        >
+      </div>
+    </div>

@@ -13,9 +13,15 @@ def logout(request):
 
 def index(request):
     islogin = 'std%5Fenm' in request.COOKIES
+    stu = ""
     if islogin: 
-        request.session['alert'] = ''
-    return render(request,'index.html',{'islogin':islogin,'alert':request.session.get('alert','')})
+        request.session['alert'] = '' 
+        r =  requests.post('https://www.mcu.edu.tw/student/new-query/default.asp',cookies=request.COOKIES)
+        r.encoding = 'big5'
+        soup = BeautifulSoup(r.text,"html.parser")
+        course_list = soup.select('#___01 > tr:nth-of-type(4) > td:nth-of-type(1) > table > tr:nth-of-type(2) > td > table:nth-of-type(1) > tr')
+        stu = soup.select('#___01 > tr:nth-of-type(1) > td:nth-of-type(3) > table > tr:nth-of-type(2) > td > table > tr:nth-of-type(1) > td')[0].text
+    return render(request,'index.html',{'islogin':islogin,'alert':request.session.get('alert',''),'Stu':stu})
 
 def login(request):
     if request.method == 'POST':
@@ -45,9 +51,9 @@ def course_list(request):
     islogin = 'std%5Fenm' in request.COOKIES
     if 'course-list' in request.COOKIES:
         l = json.loads(request.COOKIES.get('course-list'))
-        print(l)
+        l = l.split(',')
         response = HttpResponse(render(request, 'course_list.html',{
-            'course_list': l.split(','),
+            'course_list': l,
             'islogin': islogin
         }))
         return response

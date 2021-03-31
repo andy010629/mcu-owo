@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.shortcuts import redirect
 from django.http import HttpResponse , HttpResponseRedirect
 import requests
+import json
 from bs4 import BeautifulSoup
 
 def logout(request):
@@ -42,19 +43,33 @@ def login(request):
 
 def course_list(request):
     islogin = 'std%5Fenm' in request.COOKIES
-    if islogin:
-        r =  requests.post('https://www.mcu.edu.tw/student/new-query/default.asp',cookies=request.COOKIES)
-        r.encoding = 'big5'
-        soup = BeautifulSoup(r.text,"html.parser")
-        course_list = soup.select('#___01 > tr:nth-of-type(4) > td:nth-of-type(1) > table > tr:nth-of-type(2) > td > table:nth-of-type(1) > tr')
-        l = []
-        for course in course_list:
-            l.append(course.select('td:nth-of-type(2) > a')[0].text) 
-    else:    
-        l = ["尚未登入"]
-
-    return render(request, 'course_list.html', {
-        'course_list': l,
-        'islogin': islogin
-    }) 
-   
+    if 'course-list' in request.COOKIES:
+        l = json.loads(request.COOKIES.get('course-list'))
+        response = HttpResponse(render(request, 'course_list.html',{
+            'course_list': l,
+            'islogin': islogin
+        }))
+        return response
+    else:
+        if islogin:
+            r =  requests.post('https://www.mcu.edu.tw/student/new-query/default.asp',cookies=request.COOKIES)
+            r.encoding = 'big5'
+            soup = BeautifulSoup(r.text,"html.parser")
+            course_list = soup.select('#___01 > tr:nth-of-type(4) > td:nth-of-type(1) > table > tr:nth-of-type(2) > td > table:nth-of-type(1) > tr')
+            l = []
+            for course in course_list:
+                l.append(course.select('td:nth-of-type(2) > a')[0].text) 
+            response = HttpResponse(render(request, 'course_list.html', {
+            'course_list': l,
+            'islogin': islogin
+            }))
+            u = json.dumps(','.join(l))
+            response.set_cookie('course-list',u)
+        else:    
+            l = ["尚未登入"]
+            response = HttpResponse(render(request, 'course_list.html', {
+                'course_list': l,
+                'islogin': islogin
+            }))
+        
+        return response

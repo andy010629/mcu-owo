@@ -1,81 +1,155 @@
 {% load static %}
 <html lang="en">
-
-{% load pwa %}
-<head>
+  {% load pwa %}
+  <head>
     {% progressive_web_app_meta %}
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>MCU OwO</title>
     <!-- materialize icons, css & js -->
-    <link type="text/css" href="{% static 'css/materialize.min.css' %}" rel="stylesheet">
-    <link type="text/css" href="{% static 'css/styles.css' %}?version=1" rel="stylesheet">
-    <script type="text/javascript" src="{% static 'js/materialize.min.js'%}"></script>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link
+      type="text/css"
+      href="{% static 'css/materialize.min.css' %}"
+      rel="stylesheet"
+    />
+    <link
+      type="text/css"
+      href="{% static 'css/styles.css' %}?version=1"
+      rel="stylesheet"
+    />
+    <script
+      type="text/javascript"
+      src="{% static 'js/jquery-3.6.0.min.js' %}"
+    ></script>
+    <script
+      type="text/javascript"
+      src="{% static 'js/materialize.min.js' %}"
+    ></script>
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+  </head>
 
-</head>
-
-<body class="grey lighten-4">
-
+  <body class="grey lighten-4">
     <!-- top nav -->
     <nav class="z-depth-0">
-        <div class="nav-wrapper container">
-            <a href="/"><span>MCU</span> OwO</a>
-            <span class="right grey-text text-darken-1">
-        <i class="material-icons sidenav-trigger white-text" data-target="side-menu">menu</i>
-      </span>
-        </div>
+      <div class="nav-wrapper container">
+        <a href="/"><span>MCU</span> OwO</a>
+        <span class="right grey-text text-darken-1">
+          <i
+            class="material-icons sidenav-trigger white-text"
+            data-target="side-menu"
+            >menu</i
+          >
+        </span>
+      </div>
     </nav>
 
     <!-- side nav -->
     <ul id="side-menu" class="sidenav side-menu">
-        <li><a class="subheader">$MCU OwO$</a></li>
-        <li><a href="/" class="waves-effect">Home</a></li>
-        <li>
-            <div class="divider"></div>
-        </li>
-         <li><a class="waves-effect modal-trigger login-btn" data-target="login-page">Login</a></li>
-        <li>
-            <div class="divider"></div>
-        </li>
+      <li><a class="subheader">$MCU OwO$</a></li>
+      <li><a href="/" class="waves-effect">Home</a></li>
+      <li>
+        <div class="divider"></div>
+      </li>
+      <li><a href="/course_list" class="waves-effect">課程列表</a></li>
+      <li>
+        <div class="divider"></div>
+      </li>
+      {% if not islogin %}
+      <li>
+        <a class="waves-effect modal-trigger login-btn" data-target="login-page"
+          >Login</a
+        >
+      </li>
+      <li>
+        <div class="divider"></div>
+      </li>
+      {% else %}
+      <li>
+        <a href="/logout" class="waves-effect modal-trigger logout-btn"
+          >Logout</a
+        >
+      </li>
+      <li>
+        <div class="divider"></div>
+      </li>
+      {% endif %}
     </ul>
 
-  <!-- Login Page -->
-  <div id="login-page" class="modal login-page">
-    <div class="modal-content">
-      <h4>Login</h4>
-	 <div class="col s6">
-		<form class="">
-      <div class="row">
-		 <div class="input-field col s12">
-          <input id="Email" type="email" class="validate">
-          <label for="Email">Email</label>
+    <!-- Login Page -->
+    <div id="login-page" class="modal login-page">
+      <div class="modal-content">
+        <h4>Login</h4>
+        <div class="col s6">
+          <form action="/login/" method="post" id="login-form">
+            {% csrf_token %}
+            <div class="row">
+              <div class="input-field col s12">
+                <input
+                  id="StudentID"
+                  type="number"
+                  class="validate"
+                  name="uu"
+                />
+                <label for="StudentID">Email</label>
+              </div>
+              <div class="input-field col s12">
+                <input
+                  id="Password"
+                  type="password"
+                  class="validate"
+                  name="pp"
+                />
+                <label for="Password">Password</label>
+              </div>
+              <div class="input-field col s12">
+                <button type="submit" class="waves-effect waves-light btn">
+                  Login
+                </button>
+              </div>
+            </div>
+          </form>
         </div>
-        <div class="input-field col s12">
-          <input id="Password" type="text" class="validate">
-          <label for="Password">Password</label>
-        </div>
-		 <div class="input-field col s12">
-          <button type="submit" class="waves-effect waves-light btn">Login</button>
-        </div>     
-      </div>	
-      </form>
-     </div>
+      </div>
+      <div class="modal-footer">
+        <a
+          href="#!"
+          class="modal-action modal-close waves-effect waves-green btn-flat"
+          >Close</a
+        >
+      </div>
     </div>
-    <div class="modal-footer">
-      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
-    </div>
-  </div>
 
     <!-- recipes -->
-    <div class="recipes container grey-text text-darken-1">
-        <div class="card-panel recipe white row">
-        </div>
-    </div>
+    {% comment %} <div class="recipes container grey-text text-darken-1">
+      <div class="card-panel recipe white row"></div>
+    </div> {% endcomment %}
 
+    <!-- alert -->
+    {% if alert %}
    
-    <script src="{% static 'js/ui.js' %}"></script>
-</body>
+    <div id="alert" class="modal open">
+      <div class="modal-content">
+        <h4>Login Failed</h4>
+         <p>請確認帳號密碼是是否正確</p>
+      </div>
+      <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat"
+          >ok</a
+        >
+      </div>
+    </div>
+     <script>
+      $(document).ready(function () {
+        $("#alert").modal();
+        $("#alert").modal("open");
+      });
+    </script>
+    {% endif %}
 
+    <script src="{% static 'js/ui.js' %}"></script>
+  </body>
 </html>

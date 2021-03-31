@@ -1,5 +1,10 @@
 var staticCacheName = "django-pwa-v" + new Date().getTime();
-var filesToCache = [];
+var filesToCache = [
+    '/static/js/jquery-3.6.0.min.js',
+    '/static/js/materialize.min.js',
+    '/static/js/ui.js',
+    '/static/css/materialize.min.css',
+];
 
 // Cache on install
 self.addEventListener("install", event => {

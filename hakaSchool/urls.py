@@ -17,13 +17,13 @@ from django.contrib import admin
 from django.urls import path ,include
 from main.views import index
 from main.views import login,logout
-from main.views import test
+from main.views import course_list
 
 urlpatterns = [
     path('',index),
     path('', include('pwa.urls')),  # You MUST use an empty string as the URL prefix
-    # path('admin/', admin.site.urls),
-    # path('login/',login),
-    # path('test/',test),
-    # path('logout/',logout)
+    path('admin/', admin.site.urls),
+    path('login/',login),
+    path('course_list/',course_list),
+    path('logout/',logout)
 ]

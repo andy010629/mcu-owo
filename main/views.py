@@ -47,7 +47,7 @@ def course_list(request):
         l = json.loads(request.COOKIES.get('course-list'))
         print(l)
         response = HttpResponse(render(request, 'course_list.html',{
-            'course_list': l,
+            'course_list': l.split(','),
             'islogin': islogin
         }))
         return response

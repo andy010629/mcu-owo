@@ -11,17 +11,18 @@
 
 nav {
     background: var(--primary);
-    border-bottom: 2vh solid var(--secondary);
-    height: 10vh;
+    border-bottom: 1vh solid var(--secondary);
 }
 
 nav a {
     text-transform: uppercase;
     color: var(--title);
+    font-size: 17px;
 }
 
 nav a span {
     font-weight: bold;
+    font-size: 17px;
 }
 
 nav .sidenav-trigger {

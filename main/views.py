@@ -88,3 +88,28 @@ def course_list(request):
             }))
         
         return response
+
+
+def curriculum(request):
+    islogin = 'std%5Fenm' in request.COOKIES
+    if islogin:
+        r =  requests.post('https://www.mcu.edu.tw/student/new-query/sel-5-3.asp?d=2',cookies=request.COOKIES)
+        r.encoding = 'big5'
+        soup = BeautifulSoup(r.text,"html.parser")
+        # print(soup)
+        soup = soup.select('body > div > p > center > table')[0]
+        # l = []
+        # for course in course_list:
+        #     l.ppend(course.select('td:nth-of-type(2) > a')[0].text) 
+        # response = HttpResponse(render(request, 'course_list.html', {
+        # 'course_list': l,
+        # 'islogin': islogin
+        # }))
+        # u = json.dumps(','.join(l))a
+        # response.set_cookie('course-list',u)
+        response = HttpResponse(render(request, 'curriculum.html', {
+            'islogin': islogin,
+            'curriculum':soup
+        }))
+    
+    return response

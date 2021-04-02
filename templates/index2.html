@@ -1,43 +1,451 @@
-{% load static%}
-<!DOCTYPE html>
-<html lang="en">
-{% load pwa %}
-
-<head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /> {% progressive_web_app_meta %}
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous" />
-    <title>Home page</title>
-</head>
-
-<body>
-    <div class="container">
-        <div class="row vh-100 align-items-center justify-content-center">
-            <div class="modal-content" style="width: 30vw;">
-                <div class="modal-header">
-                    <h4 class="modal-title" id="loginModalLabel">Login</h4>
-                </div>
-                <form action="/login/" method="post" id="login-form">
-                    {% csrf_token %}
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="login-username" placeholder="StudentID" name="uu">
-                        </div>
-                        <div class="form-group">
-                            <input type=" password " class="form-control " id="login-password " placeholder="password" name="pp">
-                        </div>
-                        <div class="modal-footer ">
-                            <div class="alert alert-danger " role="alert " id="login-alert " style="display: none; "></div>
-                            <button type="submit " class="btn btn-primary " id="btn-login ">登入</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-    </div>
-</body>
-
-</html>
+ 
+          <tr align="center">
+            <td align="center" height="45" width="75">
+              <font size="-1"> </font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1">星期一</font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1">星期二</font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1">星期三</font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1">星期四</font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1">星期五</font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1">星期六</font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1">星期日</font>
+            </td>
+          </tr>
+          <tr align="center">
+            <td align="center" height="45" width="75">
+              <font size="-1">01</font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"> </font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"> </font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"> </font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"> </font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"> </font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"> </font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"> </font>
+            </td>
+          </tr>
+          <tr align="center">
+            <td align="center" height="45" width="75">
+              <font size="-1">02</font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"> </font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"> </font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"
+                >36202<br /><strong>線性代數</strong><br />王家輝 <br />S102
+              </font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"> </font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"> </font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"> </font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"> </font>
+            </td>
+          </tr>
+          <tr align="center">
+            <td align="center" height="45" width="75">
+              <font size="-1">03</font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"> </font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"> </font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"
+                >36202<br /><strong>線性代數</strong><br />王家輝 <br />S102
+              </font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"> </font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"> </font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"> </font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"> </font>
+            </td>
+          </tr>
+          <tr align="center">
+            <td align="center" height="45" width="75">
+              <font size="-1">04</font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"> </font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"> </font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"
+                >36202<br /><strong>線性代數</strong><br />王家輝 <br />S102
+              </font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"> </font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"> </font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"> </font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"> </font>
+            </td>
+          </tr>
+          <tr align="center">
+            <td align="center" height="45" width="75">
+              <font size="-1">20</font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"> </font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"> </font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"> </font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"
+                >36202<br /><strong>班會</strong><br />蘇民揚 <br />S102
+              </font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"> </font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"> </font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"> </font>
+            </td>
+          </tr>
+          <tr align="center">
+            <td align="center" height="45" width="75">
+              <font size="-1">05</font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"> </font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"> </font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"> </font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"
+                >36202<br /><strong>演算法</strong><br />徐熊健 <br />S102
+              </font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"
+                >36202<br /><strong>週會</strong><br /><br />
+              </font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"> </font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"> </font>
+            </td>
+          </tr>
+          <tr align="center">
+            <td align="center" height="45" width="75">
+              <font size="-1">06</font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"> </font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"> </font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"> </font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"
+                >36202<br /><strong>演算法</strong><br />徐熊健 <br />S102
+              </font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"> </font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"> </font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"> </font>
+            </td>
+          </tr>
+          <tr align="center">
+            <td align="center" height="45" width="75">
+              <font size="-1">07</font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"> </font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"
+                >36202<br /><strong>應用英文四</strong><br />林佳琪 <br />CC406
+                (實)</font
+              >
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"> </font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"
+                >36202<br /><strong>演算法</strong><br />徐熊健 <br />S102
+              </font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"
+                >36202<br /><strong>行動程設</strong><br />李開暉 <br />S304
+              </font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"> </font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"> </font>
+            </td>
+          </tr>
+          <tr align="center">
+            <td align="center" height="45" width="75">
+              <font size="-1">08</font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"> </font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"
+                >36202<br /><strong>應用英文四</strong><br />陳勁宏 <br />EE202
+              </font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"> </font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"> </font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"
+                >36202<br /><strong>行動程設</strong><br />李開暉 <br />S304
+              </font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"> </font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"> </font>
+            </td>
+          </tr>
+          <tr align="center">
+            <td align="center" height="45" width="75">
+              <font size="-1">09</font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"> </font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"> </font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"> </font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"> </font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"
+                >36202<br /><strong>行動程設</strong><br />李開暉 <br />S304
+              </font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"> </font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"> </font>
+            </td>
+          </tr>
+          <tr align="center">
+            <td align="center" height="45" width="75">
+              <font size="-1">30</font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"> </font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"> </font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"> </font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"> </font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"> </font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"> </font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"> </font>
+            </td>
+          </tr>
+          <tr align="center">
+            <td align="center" height="45" width="75">
+              <font size="-1">40</font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"> </font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"> </font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"> </font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"> </font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"
+                >36358<br /><strong>進階CPP</strong><br />謝育平 <br />S304
+              </font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"> </font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"> </font>
+            </td>
+          </tr>
+          <tr align="center">
+            <td align="center" height="45" width="75">
+              <font size="-1">50</font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"> </font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"> </font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"> </font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"> </font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"
+                >36358<br /><strong>進階CPP</strong><br />謝育平 <br />S304
+              </font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"> </font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"> </font>
+            </td>
+          </tr>
+          <tr align="center">
+            <td align="center" height="45" width="75">
+              <font size="-1">60</font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"> </font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"> </font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"> </font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"> </font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"
+                >36358<br /><strong>進階CPP</strong><br />謝育平 <br />S304
+              </font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"> </font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"> </font>
+            </td>
+          </tr>
+          <tr align="center">
+            <td align="center" height="45" width="75">
+              <font size="-1">70</font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"> </font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"> </font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"> </font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"> </font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"> </font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"> </font>
+            </td>
+            <td align="center" height="45" width="75">
+              <font size="-1"> </font>
+            </td>
+          </tr>
+       

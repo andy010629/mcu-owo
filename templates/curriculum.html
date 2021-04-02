@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% load static %} {% load pwa %}
+  <head>
+    {% progressive_web_app_meta %}
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>MCU OwO</title>
+    <!-- materialize icons, css & js -->
+    <link
+      type="text/css"
+      href="{% static 'css/materialize.min.css' %}"
+      rel="stylesheet"
+    />
+    <link
+      type="text/css"
+      href="{% static 'css/styles.css' %}?version=1"
+      rel="stylesheet"
+    />
+    <script
+      type="text/javascript"
+      src="{% static 'js/jquery-3.6.0.min.js' %}"
+    ></script>
+    <script
+      type="text/javascript"
+      src="{% static 'js/materialize.min.js' %}"
+    ></script>
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body class="grey lighten-4">
+    <!-- top nav -->
+    {% include 'top-nav.html' %}
+
+    <!-- side nav -->
+    {% include 'side-nav.html' %}
+    <div class="container">
+      <div class="row">
+        <div class="col s1">1</div>
+        <div class="col s1">2</div>
+        <div class="col s1">3</div>
+        <div class="col s1">4</div>
+        <div class="col s1">5</div>
+        <div class="col s1">6</div>
+        <div class="col s1">7</div>
+        <div class="col s1">8</div>
+        <div class="col s1">9</div>
+        <div class="col s1">10</div>
+        <div class="col s1">11</div>
+        <div class="col s1">12</div>
+      </div>
+    </div>
+    <script src="{% static 'js/ui.js' %}"></script>
+  </body>
+</html>

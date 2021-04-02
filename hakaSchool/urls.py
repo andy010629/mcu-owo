@@ -17,7 +17,9 @@ from django.contrib import admin
 from django.urls import path ,include
 from main.views import index
 from main.views import login,logout
-from main.views import course_list
+from main.views import course_list,curriculum
+from backendApi.views import get_curriculum
+from django.views.generic import TemplateView
 
 urlpatterns = [
     path('',index),
@@ -25,5 +27,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('login/',login),
     path('course_list/',course_list),
-    path('logout/',logout)
+    path('logout/',logout),
+    path('curriculum/',curriculum),
+    path('test/', TemplateView.as_view(template_name='test.html')),
+    path('api/curriculum/',get_curriculum),
+
 ]

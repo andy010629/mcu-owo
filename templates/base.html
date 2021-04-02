@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% load static %} {% load pwa %}
+  <head>
+    {% progressive_web_app_meta %}
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>MCU OwO</title>
+    <!-- materialize icons, css & js -->
+    <link
+      type="text/css"
+      href="{% static 'css/materialize.min.css' %}"
+      rel="stylesheet"
+    />
+    <link
+      type="text/css"
+      href="{% static 'css/styles.css' %}?version=1"
+      rel="stylesheet"
+    />
+    <script
+      type="text/javascript"
+      src="{% static 'js/jquery-3.6.0.min.js' %}"
+    ></script>
+    <script
+      type="text/javascript"
+      src="{% static 'js/materialize.min.js' %}"
+    ></script>
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body class="grey lighten-4">
+    <!-- top nav -->
+    {% include 'top-nav.html' %}
+
+    <!-- side nav -->
+    {% include 'side-nav.html' %}
+
+    {% block content %}
+    {% endblock %}
+
+    <!-- alert -->
+    {% if alert %}
+    <div id="alert" class="modal open">
+      <div class="modal-content">
+        <h4>Login Failed</h4>
+        <p>請確認帳號密碼是是否正確</p>
+      </div>
+      <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat"
+          >ok</a
+        >
+      </div>
+    </div>
+    <script>
+      $(document).ready(function () {
+        $("#alert").modal();
+        $("#alert").modal("open");
+      });
+    </script>
+    {% endif %}
+
+
+  </body>
+</html>

@@ -97,3 +97,13 @@ input {
 form .input-field {
     margin-top: 30px;
 }
+
+
+/* 
+.pagination li {
+    display: inline;
+} */
+
+ul.pagination li {
+    display: flex !important;
+}

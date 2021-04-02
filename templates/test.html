@@ -1,21 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
+  {% load static %} {% load pwa %}
+  <head>
+    {% progressive_web_app_meta %}
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>MCU OwO</title>
+    <!-- materialize icons, css & js -->
+    <link
+      type="text/css"
+      href="{% static 'css/materialize.min.css' %}"
+      rel="stylesheet"
+    />
+    <link
+      type="text/css"
+      href="{% static 'css/styles.css' %}?version=1"
+      rel="stylesheet"
+    />
+    <script
+      type="text/javascript"
+      src="{% static 'js/jquery-3.6.0.min.js' %}"
+    ></script>
+    <script
+      type="text/javascript"
+      src="{% static 'js/materialize.min.js' %}"
+    ></script>
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+  </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+  <body class="grey lighten-4">
+    <!-- top nav -->
+    {% include 'top-nav.html' %}
 
-<body>
-    {% for o in course_list %}
-    <p>{{o}}</p>
-    {% endfor %}
-    <form action="/logout/" method="post" id="login-form">
-        {% csrf_token %}
-        <button type="submit" class="btn btn-primary " id="btn-login ">登出</button>
-    </form>
-</body>
+    <!-- side nav -->
+    <ul id="side-menu" class="sidenav side-menu">
+      <li><a class="subheader">$MCU OwO$</a></li>
+      <li><a onclick="return get_homepage()" class="waves-effect">首頁</a></li>
+      <li>
+        <div class="divider"></div>
+      </li>
+      <li>
+        <a onclick="return get_courselist()" class="waves-effect">課程列表</a>
+      </li>
+      <li>
+        <div class="divider"></div>
+      </li>
+      {% if not islogin %}
+      <li>
+        <a class="waves-effect modal-trigger login-btn" data-target="login-page"
+          >登入</a
+        >
+      </li>
+      <li>
+        <div class="divider"></div>
+      </li>
+      {% else %}
+      <li>
+        <a href="/logout" class="waves-effect modal-trigger logout-btn">登出</a>
+      </li>
+      <li>
+        <div class="divider"></div>
+      </li>
+      {% endif %}
+    </ul>
 
+    <!-- Login page -->
+    <div id="login-page" class="modal login-page">
+      <div class="modal-content">
+        <h4>Login</h4>
+        <div class="col s6">
+          <form action="/login/" method="post" id="login-form">
+            {% csrf_token %}
+            <div class="row">
+              <div class="input-field col s12">
+                <input
+                  id="StudentID"
+                  type="number"
+                  class="validate"
+                  name="uu"
+                />
+                <label for="StudentID">學號</label>
+              </div>
+              <div class="input-field col s12">
+                <input
+                  id="Password"
+                  type="password"
+                  class="validate"
+                  name="pp"
+                />
+                <label for="Password">密碼</label>
+              </div>
+              <div class="input-field col s12">
+                <button type="submit" class="waves-effect waves-light btn">
+                  Login
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <a
+          href="#!"
+          class="modal-action modal-close waves-effect waves-green btn-flat"
+          >Close</a
+        >
+      </div>
+    </div>
+    <div class="container">
+      <div id="content"></div>
+    </div>
+    <!-- alert -->
+    {% if alert %}
+    <div id="alert" class="modal open">
+      <div class="modal-content">
+        <h4>Login Failed</h4>
+        <p>請確認帳號密碼是是否正確</p>
+      </div>
+      <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat"
+          >ok</a
+        >
+      </div>
+    </div>
+    <script>
+      $(document).ready(function () {
+        $("#alert").modal();
+        $("#alert").modal("open");
+      });
+    </script>
+    {% endif %}
+
+    <script src="{% static 'js/ui.js' %}"></script>
+    <script type="text/javascript">
+      function get_courselist() {
+        var content = fetch("http://127.0.0.1:8000/api/curriculum")
+          .then((response) => {
+            return response.text();
+          })
+          .then((html) => {
+            document.getElementById("content").innerHTML = html;
+          });
+          
+          var ele = document.getElementsByTagName('div');
+          ele.className += " responsive-table";
+      }
+      function get_homepage() {
+        document.getElementById('content').innerHTML = "homepage";
+      }
+    </script>
+  </body>
 </html>
